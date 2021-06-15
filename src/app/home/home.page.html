@@ -1,20 +1,47 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="tertiary">
+        <ion-title>
+            หน้าแรก
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <!--<ion-item routerLink="/page1">
+        <ion-label>
+            หน้า 1
+        </ion-label>
+    </ion-item>
+    <ion-item routerLink="/page2">
+        <ion-label>
+            หน้า 2
+        </ion-label>
+    </ion-item>
+    <ion-item routerLink="/page3">
+        <ion-label>
+            หน้า 3
+        </ion-label>
+    </ion-item>-->
+    <ion-grid>
+        <ion-row>
+            <!-- <ion-col class="menu-item">
+                <a routerLink="/page1">
+                    <img src="assets/icon/menu1.png">
+                    <div>หน้า 1</div>
+                </a>
+            </ion-col> -->
+            <ion-col class="menu-item">
+                <a routerLink="/page2">
+                    <img src="assets/icon/menu2.png">
+                    <div>ข้อมูลสมาชิก</div>
+                </a>
+            </ion-col>
+            <!-- <ion-col class="menu-item">
+                <a routerLink="/page3">
+                    <img src="assets/icon/menu3.png">
+                    <div>หน้า 3</div>
+                </a>
+            </ion-col> -->
+        </ion-row>
+    </ion-grid>
 </ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>ข้อมูลสมาชิก</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button routerLink="/page1">
+                เพิ่มสมาชิกใหม่
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item *ngFor="let user of users">
+        <ion-avatar slot="start">
+            <img src="assets/icon/user.png">
+        </ion-avatar>
+        <ion-label routerLink="/page3/{{ user.id }}">
+            <h3>{{ user.name }} {{ user.sname }}</h3>
+            <p>{{ user.phone }}</p>
+        </ion-label>
+        <ion-buttons slot="end">
+            <ion-button color="warning" routerLink="/page4/{{ user.id }}">
+                <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" (click)="del(user.id)">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-item>
+</ion-content>

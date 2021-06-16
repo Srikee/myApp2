@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-page3',
-  templateUrl: './page3.page.html',
-  styleUrls: ['./page3.page.scss'],
+  selector: 'app-member-show',
+  templateUrl: './member-show.page.html',
+  styleUrls: ['./member-show.page.scss'],
 })
-export class Page3Page implements OnInit {
+export class MemberShowPage implements OnInit {
   id = 1;
   name = "สมชายฤฤฤฤ";
   sname = "สมดี";
@@ -14,5 +14,4 @@ export class Page3Page implements OnInit {
 
   ngOnInit() {
   }
-
 }

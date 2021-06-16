@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-page1',
-  templateUrl: './page1.page.html',
-  styleUrls: ['./page1.page.scss'],
+  selector: 'app-member-add',
+  templateUrl: './member-add.page.html',
+  styleUrls: ['./member-add.page.scss'],
 })
-export class Page1Page implements OnInit {
+export class MemberAddPage implements OnInit {
   name = "";
   sname = "";
   phone = "";
@@ -31,12 +31,11 @@ export class Page1Page implements OnInit {
         {
           text: 'ตกลง',
           handler: () => {
-            this.router.navigateByUrl('/page2');
+            this.router.navigateByUrl('/member');
           }
         }
       ]
     });
     await alert.present();
   }
-
 }

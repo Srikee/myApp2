@@ -1,35 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { SessionService } from '../session/session.service';
 
 @Component({
-  selector: 'app-page2',
-  templateUrl: './page2.page.html',
-  styleUrls: ['./page2.page.scss'],
+  selector: 'app-member',
+  templateUrl: './member.page.html',
+  styleUrls: ['./member.page.scss'],
 })
-export class Page2Page implements OnInit {
-  users = [
-    {
-      id: 1,
-      name: "สมชาย",
-      sname: "สมดี",
-      phone: "0123456789"
-    },
-    {
-      id: 2,
-      name: "สมดี",
-      sname: "สมใจ",
-      phone: "0987654321"
-    },
-    {
-      id: 3,
-      name: "สมบัติ",
-      sname: "สมดุล",
-      phone: "1234785692"
-    },
-  ];
-  constructor(public alertController: AlertController) { }
+export class MemberPage implements OnInit {
+  users = [];
+  constructor(
+    public alertController: AlertController,
+    public session: SessionService
+  ) { }
 
   ngOnInit() {
+    this.loadData();
+  }
+  loadData() {
+    this.session.ajax(this.session.api + "member.php", {}, true).then((res: any) => {
+      //console.log(res);
+      this.users = res.datas;
+    });
   }
   async del(id) {
     //alert(id);

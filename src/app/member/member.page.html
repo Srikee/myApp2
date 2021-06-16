@@ -5,7 +5,7 @@
         </ion-buttons>
         <ion-title>ข้อมูลสมาชิก</ion-title>
         <ion-buttons slot="primary">
-            <ion-button routerLink="/page1">
+            <ion-button routerLink="/member-add">
                 เพิ่มสมาชิกใหม่
             </ion-button>
         </ion-buttons>
@@ -17,15 +17,15 @@
         <ion-avatar slot="start">
             <img src="assets/icon/user.png">
         </ion-avatar>
-        <ion-label routerLink="/page3/{{ user.id }}">
-            <h3>{{ user.name }} {{ user.sname }}</h3>
-            <p>{{ user.phone }}</p>
+        <ion-label routerLink="/member-show/{{ user.member_id }}">
+            <h3>{{ user.member_name }} {{ user.member_sname }}</h3>
+            <p>{{ user.member_phone }}</p>
         </ion-label>
         <ion-buttons slot="end">
-            <ion-button color="warning" routerLink="/page4/{{ user.id }}">
+            <ion-button color="warning" routerLink="/member-edit/{{ user.member_id }}">
                 <ion-icon slot="icon-only" name="create-outline"></ion-icon>
             </ion-button>
-            <ion-button color="danger" (click)="del(user.id)">
+            <ion-button color="danger" (click)="del(user.member_id)">
                 <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
             </ion-button>
         </ion-buttons>

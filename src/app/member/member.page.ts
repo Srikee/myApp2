@@ -15,31 +15,29 @@ export class MemberPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
+  }
+  ionViewDidEnter() {
     this.loadData();
   }
   loadData() {
     this.session.ajax(this.session.api + "member.php", {}, true).then((res: any) => {
-      //console.log(res);
       this.users = res.datas;
+    }).catch(err => {
+      this.session.showAlert(err);
     });
   }
   async del(id) {
-    //alert(id);
-    const alert = await this.alertController.create({
-      header: 'แจ้งคำยืนยันการลบ',
-      message: 'คุณแน่ใจต้องการลบข้อมูลนี้ใช่หรือไม่ ?',
-      buttons: [
-        {
-          text: 'ยกเลิก',
-          handler: (blah) => { }
-        }, {
-          text: 'ลบ',
-          handler: () => {
-            // เขียนโปรแกรมไปลบข้อมูลฐานข้อมูล
-          }
-        }
-      ]
+    this.session.showConfirm('คุณแน่ใจต้องการลบข้อมูลนี้ใช่หรือไม่ ?').then(rs => {
+      if (rs) {
+        this.session.ajax(this.session.api + "member-del.php", {
+          member_id: id
+        }, true).then((res: any) => {
+          this.loadData();
+        }).catch(err => {
+          this.session.showAlert(err);
+        });
+      }
     });
-    await alert.present();
   }
 }

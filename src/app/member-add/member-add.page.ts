@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { SessionService } from '../session/session.service';
 
 @Component({
   selector: 'app-member-add',
@@ -13,29 +13,23 @@ export class MemberAddPage implements OnInit {
   phone = "";
   constructor(
     private router: Router,
-    private alertController: AlertController
+    public session: SessionService
   ) { }
 
   ngOnInit() {
   }
   async save() {
-    // alert(this.name);
-    // alert(this.sname);
-    // alert(this.phone);
     // เอาข้อมูลบันทึกลงฐานข้อมูล
-
-    const alert = await this.alertController.create({
-      header: 'แจ้งผลการบันทึก',
-      message: 'ระบบได้ทำการบันทึกข้อมูลเรียบร้อยแล้ว',
-      buttons: [
-        {
-          text: 'ตกลง',
-          handler: () => {
-            this.router.navigateByUrl('/member');
-          }
-        }
-      ]
+    this.session.ajax(this.session.api + "member-add.php", {
+      member_name: this.name,
+      member_sname: this.sname,
+      member_phone: this.phone
+    }, true).then((res: any) => {
+      this.session.showAlert(res.msg).then(rs => {
+        this.router.navigateByUrl('/member');
+      });
+    }).catch(err => {
+      this.session.showAlert(err);
     });
-    await alert.present();
   }
 }

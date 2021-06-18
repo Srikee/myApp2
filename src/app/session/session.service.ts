@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoadingController, AlertController, ToastController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { timeout } from 'rxjs/operators';
-import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
